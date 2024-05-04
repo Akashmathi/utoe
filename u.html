@@ -1,33 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
     <style>
-        
+        /* General styles */
         body {
             background-color: #f0f0f0;
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            
-            
         }
 
         .flex {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center; /* Center horizontally */
         }
 
-        
+        /* Left sidebar styles */
         .sidebar-left {
             background-color: #6377f4;
             color: white;
-            width: 300px;
             padding: 20px;
+            flex: 1;
+            max-width: 300px;
+            margin-right: 10px; /* Add some space between left and main content */
         }
 
         .sidebar-left h1 {
-            margin-bottom: 100px;
+            margin-bottom: 20px;
         }
 
         .sidebar-left ul {
@@ -40,20 +43,23 @@
             margin-bottom: 5px;
         }
 
-       
+        /* Main content styles */
         .main-content {
             background-color: #ffffff;
-            width: 1290px;
             padding: 20px;
+            flex: 1;
+            max-width: calc(100% - 320px); /* Adjust based on the width of left and right sidebar */
+            margin-right: 10px; /* Add some space between main content and right sidebar */
         }
 
         .main-content h1 {
             margin-bottom: 15px;
         }
 
+        /* Grid styles */
         .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
             gap: 10px;
         }
 
@@ -87,8 +93,10 @@
         .sidebar-right {
             background-color: #475569;
             color: white;
-            width: 10%;
             padding: 20px;
+            flex: 1;
+            max-width: 300px;
+            margin-right: 10px; /* Add some space between main content and right sidebar */
         }
 
         .sidebar-right h1 {
@@ -105,7 +113,7 @@
             margin-bottom: 5px;
         }
 
-        /* Progress bar and certificate button styles */
+        /* Progress button styles */
         .progress-button {
             background-color: #e53e4f;
             color: white;
@@ -119,8 +127,21 @@
             background-color: #c53030;
         }
 
-        
-        
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 768px) {
+            .flex {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items horizontally */
+            }
+
+            .sidebar-left,
+            .main-content,
+            .sidebar-right {
+                max-width: 100%; /* Full width for each sidebar on smaller screens */
+                margin-right: 0; /* Remove margin between sidebar and main content */
+                margin-bottom: 20px; /* Add space between sections */
+            }
+        }
     </style>
 </head>
 <body>
